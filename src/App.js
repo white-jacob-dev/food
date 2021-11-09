@@ -1,23 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 function App() {
+  const [restaurants, setRestaurants] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(
+        "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522%2C151.1957362&radius=1500&type=restaurant&key=AIzaSyDoY5Ziii3WZJ6oNcw2loYOzeZSB09cmNU"
+      )
+      .then((result) => {
+        for (let i=0; i<result.data.results.length; i++){
+          setRestaurants(oldArray => [...oldArray, result.data.results[i].name])
+        }
+        console.log(restaurants);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {restaurants.map(restaurantName => 
+        <div>{ restaurantName }</div>  
+      )}
     </div>
   );
 }
