@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import './App.css';
 
 function App() {
   var latitude;
@@ -32,9 +33,23 @@ function App() {
   });
 
   return (
-    <div>
+    <div class='test'>
+      <header>
+        The picky couple's food picker.
+      </header>
+      <p>
+        Do you and your significant other share an equal ineptitude for deciding on a place to eat?
+      </p>
+      <p>
+        Well then, you're in the right place.
+      </p>
+      <button>
+        Get Started
+      </button>
+      
+
       {restaurants.map((restaurantName, index) => 
-        <div key={index}>{ restaurantName }</div>  
+      <div class="restaurants" key={index}>{ restaurantName }</div>  
       )}
     </div>
   );
