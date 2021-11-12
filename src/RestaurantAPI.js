@@ -32,15 +32,7 @@ function RestaurantAPI() {
   } else if (!isLoaded) {
     return <div>Loading...</div>;
   } else {
-    return (
-      <div>
-        <h2>
-          People named '{items.name}' have statistically on average lived{" "}
-          {items.age} years
-        </h2>
-        <h2>Based on {items.count} data points.</h2>
-      </div>
-    );
+    return <div>{items[0].name}</div>;
   }
 }
 
