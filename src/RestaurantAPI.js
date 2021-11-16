@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import FoodCard from "./FoodCard";
+import FoodCard from "./FoodCard.js";
 
 function RestaurantAPI() {
   const [error, setError] = useState(null);
@@ -36,7 +36,14 @@ function RestaurantAPI() {
   } else if (!isLoaded) {
     return <div>Loading...</div>;
   } else {
-    const restaurants = items.map((item, index) => <FoodCard key={index} name={items[index].name} distance={items[index].domains[0]} />)
+    const restaurants = items.map((item, index) => (
+      <FoodCard
+        key={index}
+        name={items[index].name}
+        distance={items[index].domains[0]}
+      />
+    ));
+
     return [restaurants];
   }
 }

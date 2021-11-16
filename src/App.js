@@ -27,7 +27,6 @@ function App() {
         <button>Get Started</button>
       </div>
       <div className="right">
-        <FoodCard name="Red Lobster" distance="20.23 miles" />
         <RestaurantAPI />
       </div>
     </div>
