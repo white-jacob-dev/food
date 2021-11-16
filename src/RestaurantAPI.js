@@ -16,10 +16,10 @@ function RestaurantAPI() {
         (result) => {
           setIsLoaded(true);
           setItems(result);
-          result.forEach((item) => {
-            console.log(item.name);
-          });
-          // console.log(result);
+          // result.forEach((item) => {
+          //   console.log(item.name);
+          // });
+          console.log(result);
         },
         // Note: it's important to handle errors here
         // instead of a catch() block so that we don't swallow
@@ -36,8 +36,7 @@ function RestaurantAPI() {
   } else if (!isLoaded) {
     return <div>Loading...</div>;
   } else {
-    const restaurants = items.map((item, index) => <FoodCard key={index} name={items[index].name} distance="20.23 miles" />)
-
+    const restaurants = items.map((item, index) => <FoodCard key={index} name={items[index].name} distance={items[index].domains[0]} />)
     return [restaurants];
   }
 }
