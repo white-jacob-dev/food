@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import FoodCard from "./FoodCard";
 
 function RestaurantAPI() {
   const [error, setError] = useState(null);
@@ -15,7 +16,10 @@ function RestaurantAPI() {
         (result) => {
           setIsLoaded(true);
           setItems(result);
-          console.log(result);
+          result.forEach((item) => {
+            console.log(item.name);
+          });
+          // console.log(result);
         },
         // Note: it's important to handle errors here
         // instead of a catch() block so that we don't swallow
@@ -32,7 +36,9 @@ function RestaurantAPI() {
   } else if (!isLoaded) {
     return <div>Loading...</div>;
   } else {
-    return <div>{items[0].name}</div>;
+    const restaurants = items.map((item, index) => <FoodCard key={index} name={items[index].name} distance="20.23 miles" />)
+
+    return [restaurants];
   }
 }
 
