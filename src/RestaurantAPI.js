@@ -10,7 +10,7 @@ function RestaurantAPI() {
   // this useEffect will run once
   // similar to componentDidMount()
   useEffect(() => {
-    fetch("https://universities.hipolabs.com/search?country=France")
+    fetch("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522%2C151.1957362&radius=1500&type=restaurant&keyword=cruise&key=AIzaSyDoY5Ziii3WZJ6oNcw2loYOzeZSB09cmNU")
       .then((res) => res.json())
       .then(
         (result) => {
