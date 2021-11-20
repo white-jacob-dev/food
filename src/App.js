@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import "./App.css";
 import RestaurantAPI from "./RestaurantAPI";
-import FoodCard from "./FoodCard";
 
 function App() {
   var latitude = 39.659;
