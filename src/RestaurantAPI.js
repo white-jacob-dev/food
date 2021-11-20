@@ -10,7 +10,7 @@ function RestaurantAPI() {
   // this useEffect will run once
   // similar to componentDidMount()
   useEffect(() => {
-    fetch("http://universities.hipolabs.com/search?country=France")
+    fetch("https://universities.hipolabs.com/search?country=France")
       .then((res) => res.json())
       .then(
         (result) => {
