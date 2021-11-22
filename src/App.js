@@ -3,26 +3,45 @@ import "./App.css";
 import RestaurantAPI from "./RestaurantAPI";
 
 function App() {
-  const [showRestaurants, setShowRestaurants] = useState(false)
-  
+  const [showRestaurants, setShowRestaurants] = useState(false);
+  const [IsStarted, setIsStarted] = useState(false);
+  const [ButtonText, setButtonText] = useState(["Get Started"]);
+  const buttonArray = ["We've Picked"];
+  const [InstructionText, setInstructionText] = useState([
+    "Do you and your significant other share an equal ineptitude for deciding on a place to eat?",
+  ]);
+  const instructionArray = [
+    "Each person picks 5 restaurants from the list to the right that you could tolerate going to.",
+  ];
+  const [HeaderText, setHeaderText] = useState([
+    "The picky couple's food picker.",
+  ]);
+  const headerArray = ["Pick your places."];
+
   const handleGetStarted = () => {
-    setShowRestaurants(true)
-  } 
+    console.log(instructionArray);
+    setInstructionText(instructionArray);
+    setButtonText(buttonArray);
+    setHeaderText(headerArray);
+    setIsStarted(true);
+    setShowRestaurants(true);
+  };
 
   return (
     <div>
       <div className="left">
-        <header>The picky couple's food picker.</header>
-        <p>
-          Do you and your significant other share an equal ineptitude for
-          deciding on a place to eat?
+        <header style={{ marginLeft: IsStarted ? "24vw" : "" }}>
+          {HeaderText[0]}
+        </header>
+        <p className="instruction-text">{InstructionText[0]}</p>
+        <p className="sub-text" style={{ display: IsStarted ? "none" : "" }}>
+          Well then, you're in the right place.
         </p>
-        <p>Well then, you're in the right place.</p>
-        <button onClick={handleGetStarted}>Get Started</button>
+        <button className="main-button" onClick={handleGetStarted}>
+          {ButtonText[0]}
+        </button>
       </div>
-      <div className="right">
-        { showRestaurants ? <RestaurantAPI/> : null }
-      </div>
+      <div className="right">{showRestaurants ? <RestaurantAPI /> : ""}</div>
     </div>
   );
 }

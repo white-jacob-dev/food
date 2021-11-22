@@ -3,7 +3,7 @@
   width: auto;
   padding: 10px 30px;
   border-radius: 32px;
-  background:#121212;
+  background: #121212;
   box-shadow: 6px 6px 14px #0e0e0e, -6px -6px 14px #171717;
   display: flex;
   flex-direction: column;
@@ -11,15 +11,12 @@
   justify-content: center;
   font-size: 0.8vw;
   text-align: center;
-  user-select:none;
+  user-select: none;
+  color: white;
 }
 
-.restaurant-name {
-  color: white
-}
-
-.restaurant-name:hover {
-  color: green;
+.card:hover {
+  color: orange;
   transition: all 0.4s;
 }
 
@@ -27,6 +24,4 @@
   font-family: "Karla";
   font-weight: 400;
   font-size: 0.7vw;
-  color: rgb(201, 198, 198);
 }
-

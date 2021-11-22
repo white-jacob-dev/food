@@ -48,7 +48,6 @@ p {
 }
 
 button {
-  display: inline-block;
   width: auto;
   height: auto;
   font-size: 1vw;
@@ -59,7 +58,8 @@ button {
   border-radius: 0.5vw;
   font-family: "Montserrat";
   font-weight: 700;
-  margin-left: 33.3vw;
+  float: right;
+  margin-right: 1vw;
   transition: all 0.4s;
 }
 
