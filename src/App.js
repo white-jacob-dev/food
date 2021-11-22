@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import RestaurantAPI from "./RestaurantAPI";
 
 function App() {
+  const [showRestaurants, setShowRestaurants] = useState(false)
+  
+  const handleGetStarted = () => {
+    setShowRestaurants(true)
+  } 
+
   return (
     <div>
       <div className="left">
@@ -12,10 +18,10 @@ function App() {
           deciding on a place to eat?
         </p>
         <p>Well then, you're in the right place.</p>
-        <button>Get Started</button>
+        <button onClick={handleGetStarted}>Get Started</button>
       </div>
       <div className="right">
-        <RestaurantAPI />
+        { showRestaurants ? <RestaurantAPI/> : null }
       </div>
     </div>
   );

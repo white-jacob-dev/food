@@ -1,15 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import "./FoodCard.css";
 
-class FoodCard extends React.Component {
-  render() {
+function FoodCard(props) {
+    const [isSelected, setIsSelected] = useState(false);
+
+    const handleSelect = () => {
+      if (isSelected === true) {
+        setIsSelected(false);
+      }
+      else setIsSelected(true)
+      }
+
     return (
-      <div className="card">
-        <div className="restaurant-name">{this.props.name}</div>
-        <div className="restaurant-distance">{this.props.distance}</div>
+      <div className="card" onClick={handleSelect} style={{background: isSelected ? '#282928' : '#121212'}}>
+        <div className="restaurant-name">{props.name}</div>
+        <div className="restaurant-distance">{props.distance}</div>
       </div>
     );
   }
-}
+
 
 export default FoodCard;
