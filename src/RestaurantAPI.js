@@ -6,20 +6,23 @@ function RestaurantAPI() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
 
+
   // Note: the empty deps array [] means
   // this useEffect will run once
   // similar to componentDidMount()
   useEffect(() => {
-    fetch("http://universities.hipolabs.com/search?country=France")
+    var latitude = 39.659;
+    var longitude = -79.96;
+    fetch("https://secret-scrubland-29763.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+latitude+"%2C"+longitude+"&radius=1500&type=restaurant&key=AIzaSyDoY5Ziii3WZJ6oNcw2loYOzeZSB09cmNU")
+    // fetch("http://universities.hipolabs.com/search?country=France")
       .then((res) => res.json())
       .then(
         (result) => {
           setIsLoaded(true);
-          setItems(result);
-          // result.forEach((item) => {
+          setItems(result.results);
+          // result.results.forEach((item) => {
           //   console.log(item.name);
-          // });
-          console.log(result);
+          // }); 
         },
         // Note: it's important to handle errors here
         // instead of a catch() block so that we don't swallow
@@ -36,11 +39,12 @@ function RestaurantAPI() {
   } else if (!isLoaded) {
     return <div>Loading...</div>;
   } else {
+    console.log(items)
     const restaurants = items.map((item, index) => (
       <FoodCard
         key={index}
         name={items[index].name}
-        distance={items[index].domains[0]}
+        distance={items[index].vicinity}
       />
     ));
 

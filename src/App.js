@@ -1,24 +1,11 @@
 import React from "react";
 import "./App.css";
 import RestaurantAPI from "./RestaurantAPI";
-import MapsTest from "./MapsTest"
 
 function App() {
-  var latitude = 39.659;
-  var longitude = -79.96;
-
-  function success(position) {
-    latitude = position.coords.latitude;
-    longitude = position.coords.longitude;
-
-    console.log("(" + latitude + ", " + longitude + ")");
-  }
-  navigator.geolocation.getCurrentPosition(success);
-
   return (
     <div>
       <div className="left">
-        <MapsTest/>
         <header>The picky couple's food picker.</header>
         <p>
           Do you and your significant other share an equal ineptitude for
