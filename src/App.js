@@ -19,7 +19,6 @@ function App() {
   const headerArray = ["Pick your places."];
 
   const handleGetStarted = () => {
-    console.log(instructionArray);
     setInstructionText(instructionArray);
     setButtonText(buttonArray);
     setHeaderText(headerArray);
@@ -31,14 +30,14 @@ function App() {
     <div>
       <div className="left">
         <header style={{ marginLeft: IsStarted ? "24vw" : "" }}>
-          {HeaderText[0]}
+          {HeaderText}
         </header>
-        <p className="instruction-text">{InstructionText[0]}</p>
+        <p className="instruction-text">{InstructionText}</p>
         <p className="sub-text" style={{ display: IsStarted ? "none" : "" }}>
           Well then, you're in the right place.
         </p>
         <button className="main-button" onClick={handleGetStarted}>
-          {ButtonText[0]}
+          {ButtonText}
         </button>
       </div>
       <div className="right">{showRestaurants ? <RestaurantAPI /> : ""}</div>

@@ -6,8 +6,12 @@ function FoodCard(props) {
 
   const handleSelect = () => {
     if (isSelected === true) {
+      props.updateCounter(-1);
       setIsSelected(false);
-    } else setIsSelected(true);
+    } else {
+      props.updateCounter(1);
+      setIsSelected(true);
+    }
   };
 
   return (

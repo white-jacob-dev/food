@@ -5,6 +5,12 @@ function RestaurantAPI() {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
+  const [Counter, setCounter] = useState(0);
+
+  function updateCounter(selected) {
+    setCounter(Counter + selected);
+    console.log(Counter + selected);
+  }
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(function showPosition(position) {
@@ -43,6 +49,7 @@ function RestaurantAPI() {
         key={index}
         name={items[index].name}
         distance={items[index].vicinity}
+        updateCounter={updateCounter}
       />
     ));
 
