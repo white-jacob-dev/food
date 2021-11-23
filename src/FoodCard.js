@@ -1,23 +1,26 @@
 import React, { useState } from "react";
 import "./FoodCard.css";
+import { useDispatch } from "react-redux";
+import { increment, decrement } from "./CounterSlice";
 
 function FoodCard(props) {
   const [isSelected, setIsSelected] = useState(false);
+  const dispatch = useDispatch();
 
-  const handleSelect = () => {
-    if (isSelected === true) {
-      props.updateCounter(-1);
-      setIsSelected(false);
-    } else {
-      props.updateCounter(1);
+  const handleClick = () => {
+    if (!isSelected === true) {
+      dispatch(increment());
       setIsSelected(true);
+    } else {
+      setIsSelected(false);
+      dispatch(decrement());
     }
   };
 
   return (
     <div
       className="card"
-      onClick={handleSelect}
+      onClick={handleClick}
       style={{
         color: isSelected ? "lime" : "",
       }}

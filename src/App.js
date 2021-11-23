@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./App.css";
 import RestaurantAPI from "./RestaurantAPI";
+import FoodCard from "./FoodCard";
+import { useSelector } from "react-redux";
 
 function App() {
   const [showRestaurants, setShowRestaurants] = useState(false);
@@ -26,6 +28,8 @@ function App() {
     setShowRestaurants(true);
   };
 
+  const count = useSelector((state) => state.counter.value);
+
   return (
     <div>
       <div className="left">
@@ -33,6 +37,7 @@ function App() {
           {HeaderText}
         </header>
         <p className="instruction-text">{InstructionText}</p>
+        <p># of restaurants you've picked: {count}</p>
         <p className="sub-text" style={{ display: IsStarted ? "none" : "" }}>
           Well then, you're in the right place.
         </p>
