@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import "./App.css";
 import RestaurantAPI from "./RestaurantAPI";
-import FoodCard from "./FoodCard";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { stepIncrement } from "./StepCounterSlice";
+
 
 function App() {
   const [showRestaurants, setShowRestaurants] = useState(false);
   const [IsStarted, setIsStarted] = useState(false);
   const [ButtonText, setButtonText] = useState(["Get Started"]);
-  const buttonArray = ["We've Picked"];
+  const buttonArray = ["Continue"];
   const [InstructionText, setInstructionText] = useState([
     "Do you and your significant other share an equal ineptitude for deciding on a place to eat?",
   ]);
@@ -19,8 +20,28 @@ function App() {
     "The picky couple's food picker.",
   ]);
   const headerArray = ["Pick your places."];
+  
 
-  const handleGetStarted = () => {
+  //Redux state logic
+  const dispatch = useDispatch();
+  const selectionCounter = useSelector((state) => state.selectionCounter.value);
+  const stepCounter = useSelector((state) => state.stepCounter.value);
+
+  const handleButtonClick = () => {
+    dispatch(stepIncrement());
+    switch(stepCounter) {
+      case 0:
+        console.log("1st step")
+        //do some logic based on this step
+        break;
+      case 1:
+        console.log("2nd step");
+        //do some logic based on this step
+        break;
+      default: 
+        console.log("something went wrong")
+        break;      
+    }
     setInstructionText(instructionArray);
     setButtonText(buttonArray);
     setHeaderText(headerArray);
@@ -28,7 +49,7 @@ function App() {
     setShowRestaurants(true);
   };
 
-  const count = useSelector((state) => state.counter.value);
+ 
 
   return (
     <div>
@@ -37,11 +58,11 @@ function App() {
           {HeaderText}
         </header>
         <p className="instruction-text">{InstructionText}</p>
-        <p># of restaurants you've picked: {count}</p>
-        <p className="sub-text" style={{ display: IsStarted ? "none" : "" }}>
+        <p style={{ display: stepCounter !== 0 ? "" : "none" }}># of restaurants you've picked: {selectionCounter}</p>
+        <p className="sub-text" style={{ display: stepCounter !== 0 ? "none" : "" }}>
           Well then, you're in the right place.
         </p>
-        <button className="main-button" onClick={handleGetStarted}>
+        <button className="main-button" onClick={handleButtonClick}>
           {ButtonText}
         </button>
       </div>

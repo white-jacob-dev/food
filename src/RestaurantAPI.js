@@ -37,7 +37,6 @@ function RestaurantAPI() {
   if (!isLoaded) {
     return <div style={{ color: "white" }}>Loading Restaurants...</div>;
   } else {
-    // console.log(items);
     const restaurants = items.map((item, index) => (
       <FoodCard
         key={index}

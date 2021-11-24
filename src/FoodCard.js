@@ -1,19 +1,20 @@
 import React, { useState } from "react";
 import "./FoodCard.css";
-import { useDispatch } from "react-redux";
-import { increment, decrement } from "./CounterSlice";
+import { useSelector, useDispatch } from "react-redux";
+import { selectionIncrement, selectionDecrement } from "./SelectionCounterSlice";
 
 function FoodCard(props) {
   const [isSelected, setIsSelected] = useState(false);
   const dispatch = useDispatch();
+  const stepCounter = useSelector((state) => state.stepCounter.value);
 
   const handleClick = () => {
     if (!isSelected === true) {
-      dispatch(increment());
+      dispatch(selectionIncrement());
       setIsSelected(true);
     } else {
       setIsSelected(false);
-      dispatch(decrement());
+      dispatch(selectionDecrement());
     }
   };
 

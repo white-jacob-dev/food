@@ -1,8 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import CounterSlice from "./CounterSlice";
+import SelectionCounterSlice from "./SelectionCounterSlice";
+import StepCounterSlice from "./StepCounterSlice";
 
 export default configureStore({
   reducer: {
-    counter: CounterSlice,
+    selectionCounter: SelectionCounterSlice,
+    stepCounter: StepCounterSlice
   },
 });
