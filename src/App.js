@@ -3,7 +3,11 @@ import "./App.css";
 import RestaurantAPI from "./RestaurantAPI";
 import { useSelector, useDispatch } from "react-redux";
 import { stepIncrement } from "./StepCounterSlice";
-
+import {
+  selectionIncrement,
+  selectionDecrement,
+  selectionReset,
+} from "./SelectionCounterSlice";
 
 function App() {
   const [showRestaurants, setShowRestaurants] = useState(false);
@@ -20,7 +24,6 @@ function App() {
     "The picky couple's food picker.",
   ]);
   const headerArray = ["Pick your places."];
-  
 
   //Redux state logic
   const dispatch = useDispatch();
@@ -29,27 +32,26 @@ function App() {
 
   const handleButtonClick = () => {
     dispatch(stepIncrement());
-    switch(stepCounter) {
+    switch (stepCounter) {
       case 0:
-        console.log("1st step")
+        console.log("1st step");
         //do some logic based on this step
         break;
       case 1:
         console.log("2nd step");
         //do some logic based on this step
         break;
-      default: 
-        console.log("something went wrong")
-        break;      
+      default:
+        console.log("something went wrong");
+        break;
     }
+    dispatch(selectionReset());
     setInstructionText(instructionArray);
     setButtonText(buttonArray);
     setHeaderText(headerArray);
     setIsStarted(true);
     setShowRestaurants(true);
   };
-
- 
 
   return (
     <div>
@@ -58,8 +60,13 @@ function App() {
           {HeaderText}
         </header>
         <p className="instruction-text">{InstructionText}</p>
-        <p style={{ display: stepCounter !== 0 ? "" : "none" }}># of restaurants you've picked: {selectionCounter}</p>
-        <p className="sub-text" style={{ display: stepCounter !== 0 ? "none" : "" }}>
+        <p style={{ display: stepCounter !== 0 ? "" : "none" }}>
+          # of restaurants you've picked: {selectionCounter}
+        </p>
+        <p
+          className="sub-text"
+          style={{ display: stepCounter !== 0 ? "none" : "" }}
+        >
           Well then, you're in the right place.
         </p>
         <button className="main-button" onClick={handleButtonClick}>
