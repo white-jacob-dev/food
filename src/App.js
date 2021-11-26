@@ -4,14 +4,11 @@ import RestaurantAPI from "./RestaurantAPI";
 import { useSelector, useDispatch } from "react-redux";
 import { stepIncrement } from "./StepCounterSlice";
 import {
-  selectionIncrement,
-  selectionDecrement,
   selectionReset,
 } from "./SelectionCounterSlice";
 
 function App() {
   const [showRestaurants, setShowRestaurants] = useState(false);
-  const [IsStarted, setIsStarted] = useState(false);
   const [ButtonText, setButtonText] = useState(["Get Started"]);
   const buttonArray = [
     "Continue", 
@@ -71,7 +68,6 @@ function App() {
         break;
     }
     dispatch(selectionReset());
-    setIsStarted(true);
     setShowRestaurants(true);
   };
 
