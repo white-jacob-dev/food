@@ -13,7 +13,10 @@ function App() {
   const [showRestaurants, setShowRestaurants] = useState(false);
   const [IsStarted, setIsStarted] = useState(false);
   const [ButtonText, setButtonText] = useState(["Get Started"]);
-  const buttonArray = ["Continue"];
+  const buttonArray = [
+    "Continue", 
+    "Decide"
+  ];
   const [InstructionText, setInstructionText] = useState([
     "Do you and your significant other share an equal ineptitude for deciding on a place to eat?",
   ]);
@@ -21,12 +24,15 @@ function App() {
     "First, each person picks 5 restaurants from the list to the right that you could tolerate going to.",
     "Next, each person picks 3 restaurants from the remaining restaurants.",
     "Finally, each person picks 1 restaurant from what's left.",
-    "Now, a restaurant will be picked randomly from the 2 restaurants each person settled on."
+    "Now, because 2 adult human beings couldn't decide on a restaurant to eat, a robot will decide for you."
   ];
   const [HeaderText, setHeaderText] = useState([
     "The picky couple's food picker.",
   ]);
-  const headerArray = ["Pick your places."];
+  const headerArray = [
+    "Pick your places.",
+    "Decision time."
+  ];
 
   //Redux state logic
   const dispatch = useDispatch();
@@ -38,7 +44,9 @@ function App() {
     switch (stepCounter) {
       case 0:
         console.log("Step counter = 1");
+        setButtonText(buttonArray[0])
         setInstructionText(instructionArray[0]);
+        setHeaderText(headerArray[0])
         //do some logic based on this step
         break;
       case 1:
@@ -53,7 +61,9 @@ function App() {
         break;
       case 3:
         console.log("Step counter = 4");
+        setButtonText(buttonArray[1])
         setInstructionText(instructionArray[3]);
+        setHeaderText(headerArray[1])
         //do some logic based on this step
         break;
       default:
@@ -61,8 +71,6 @@ function App() {
         break;
     }
     dispatch(selectionReset());
-    setButtonText(buttonArray);
-    setHeaderText(headerArray);
     setIsStarted(true);
     setShowRestaurants(true);
   };
@@ -70,11 +78,11 @@ function App() {
   return (
     <div>
       <div className="left">
-        <header style={{ marginLeft: IsStarted ? "24vw" : "" }}>
+        <header style={{ marginLeft: stepCounter === 4 ? "27vw" : stepCounter !== 0 ? "24.4vw" : ""}}>
           {HeaderText}
         </header>
         <p className="instruction-text">{InstructionText}</p>
-        <p style={{ display: stepCounter !== 0 ? "" : "none" }}>
+        <p style={{ display: (stepCounter !== 0 && stepCounter !== 4) ? "" : "none" }}>
           # of restaurants you've picked: {selectionCounter}
         </p>
         <p

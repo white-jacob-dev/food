@@ -70,7 +70,7 @@ function FoodCard(props) {
         className="card"
         onClick={handleClick}
         style={{
-          color: isSelected3 ? "purple" : "",
+          color: isSelected3 ? "blueviolet" : "",
         }}
       >
         <div className="restaurant-name">{props.name}</div>
@@ -111,7 +111,7 @@ function FoodCard(props) {
         className="card"
         onClick={handleClick}
         style={{
-          color: isSelected3 ? "purple" : "",
+          color: isSelected3 ? "blueviolet" : "",
           display: "none",
         }}
       >

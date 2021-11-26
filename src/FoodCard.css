@@ -16,7 +16,6 @@
 }
 
 .card:hover {
-  color: orange;
   transition: all 0.4s;
 }
 
