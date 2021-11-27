@@ -21,14 +21,16 @@ function App() {
     "First, each person picks 5 restaurants from the list to the right that you could tolerate going to.",
     "Next, each person picks 3 restaurants from the remaining restaurants.",
     "Finally, each person picks 1 restaurant from what's left.",
-    "Now, because 2 adult human beings couldn't decide on a restaurant to eat, a robot will decide for you."
+    "Now, because 2 adult human beings couldn't decide on a restaurant to eat, a robot will decide for you.",
+    "Not what you wanted? Too bad. Go eat."
   ];
   const [HeaderText, setHeaderText] = useState([
     "The picky couple's food picker.",
   ]);
   const headerArray = [
     "Pick your places.",
-    "Decision time."
+    "Decision time.",
+    "Go eat."
   ];
 
   //Redux state logic
@@ -63,6 +65,12 @@ function App() {
         setHeaderText(headerArray[1])
         //do some logic based on this step
         break;
+      case 4:
+        console.log("Step counter = 5");
+        setInstructionText(instructionArray[4]);
+        setHeaderText(headerArray[2]);
+        break;
+
       default:
         console.log("something went wrong");
         break;
@@ -74,11 +82,11 @@ function App() {
   return (
     <div>
       <div className="left">
-        <header style={{ marginLeft: stepCounter === 4 ? "27vw" : stepCounter !== 0 ? "24.4vw" : ""}}>
+        <header style={{ marginLeft: stepCounter === 5 ? "34.7vw" : stepCounter === 4 ? "27vw" : stepCounter !== 0 ? "24.4vw" : ""}}>
           {HeaderText}
         </header>
         <p className="instruction-text">{InstructionText}</p>
-        <p style={{ display: (stepCounter !== 0 && stepCounter !== 4) ? "" : "none" }}>
+        <p style={{ display: (stepCounter !== 0 && stepCounter !== 4 && stepCounter !== 5) ? "" : "none" }}>
           # of restaurants you've picked: {selectionCounter}
         </p>
         <p
@@ -87,7 +95,7 @@ function App() {
         >
           Well then, you're in the right place.
         </p>
-        <button className="main-button" onClick={handleButtonClick}>
+        <button className="main-button" onClick={handleButtonClick} style={{ display: stepCounter === 5 ? "none" : "" }}>
           {ButtonText}
         </button>
       </div>
