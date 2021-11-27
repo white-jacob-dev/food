@@ -77,6 +77,19 @@ function FoodCard(props) {
         <div className="restaurant-distance">{props.distance}</div>
       </div>
     );
+    if(stepCounter === 5 && isSelected && isSelected2 && isSelected3 )
+    return (
+      <div
+        className="card"
+        onClick={handleClick}
+        style={{
+          color: isSelected3 ? "orange" : "",
+        }}
+      >
+        <div className="restaurant-name">{props.name}</div>
+        <div className="restaurant-distance">{props.distance}</div>
+      </div>
+    );
   if (stepCounter === 2 && !isSelected) {
     return (
       <div
@@ -119,7 +132,23 @@ function FoodCard(props) {
         <div className="restaurant-distance">{props.distance}</div>
       </div>
     );
-  } else
+  } else if (stepCounter === 5 && !isSelected3) {
+    return (
+      <div
+        className="card"
+        onClick={handleClick}
+        style={{
+          color: isSelected3 ? "orange" : "",
+          display: "none"
+        }}
+      >
+        <div className="restaurant-name">{props.name}</div>
+        <div className="restaurant-distance">{props.distance}</div>
+      </div>
+    );
+  }
+  
+  else
     return (
       <div
         className="card"
