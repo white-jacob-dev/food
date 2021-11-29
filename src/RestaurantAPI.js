@@ -40,6 +40,7 @@ function RestaurantAPI() {
     const restaurants = items.map((item, index) => (
       <FoodCard
         key={index}
+        id={index}
         name={items[index].name}
         distance={items[index].vicinity}
       />
