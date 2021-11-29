@@ -7,6 +7,7 @@ import { selectionReset } from "./SelectionCounterSlice";
 import $ from "jquery";
 
 function App() {
+  const randomGenerator = Math.random() < 0.5;
   const [showRestaurants, setShowRestaurants] = useState(false);
   const [ButtonText, setButtonText] = useState(["Get Started"]);
   const buttonArray = ["Continue", "Decide"];
@@ -32,10 +33,13 @@ function App() {
 
   const handleButtonClick = () => {
     if (stepCounter === 4) {
-      $(".card:hidden").each(function (index) {
-        console.log("test");
+      console.log("RANDOM GENERATOR IS: " + randomGenerator);
+      $(".card:visible").each(function (index) {
+        console.log($(".card:visible").index());
+        if (randomGenerator === true) {
+        } else if (randomGenerator === false) {
+        }
       });
-      //   console.log($(".card").css("display"));
     }
     dispatch(stepIncrement());
     switch (stepCounter) {
