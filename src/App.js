@@ -34,12 +34,11 @@ function App() {
   const handleButtonClick = () => {
     if (stepCounter === 4) {
       console.log("RANDOM GENERATOR IS: " + randomGenerator);
-      $(".card:visible").each(function (index) {
-        console.log($(".card:visible").index());
-        if (randomGenerator === true) {
-        } else if (randomGenerator === false) {
-        }
-      });
+      if (randomGenerator === true) {
+        $(".card:visible").first().hide();
+      } else if (randomGenerator === false) {
+        $(".card:visible:not(:first)").hide();
+      }
     }
     dispatch(stepIncrement());
     switch (stepCounter) {
