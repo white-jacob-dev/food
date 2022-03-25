@@ -16,7 +16,7 @@ Install the packages and run the project using:
 ```bash
 1. npm install
 
-2. Get a Google Places API key below and insert it into the fetch in 'RestaurantAPI.js:
+2. Get a Google Places API key below and insert it into the fetch on the file 'RestaurantAPI.js':
 https://developers.google.com/maps/documentation/places/web-service/get-api-key
 
 3. npm start
